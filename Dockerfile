@@ -10,6 +10,11 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 RUN pip install -r /requirements.txt
 RUN apk del .tmp-build-deps
 
+RUN sudo apt update
+RUN sudo apt-get install  postgresql-contrib
+RUN sudo apt-get install libpq-dev gcc
+RUN sudo apt-get install python3-dev
+
 RUN mkdir /app
 WORKDIR /app
 COPY ./app /app
